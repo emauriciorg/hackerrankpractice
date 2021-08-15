@@ -45,7 +45,7 @@ long sum_total(int n, int *arr){
 
 void miniMaxSum(int arr_count, int* arr) {
         sort_numbers(arr_count,arr);
-        long low= sum_total(4,arr);        
-        long high= sum_total(4,(arr+1));        
+        long low= sum_total(arr_count,arr);        
+        long high= sum_total(arr_count,(arr+1));        
         printf("%ld %ld\n",low, high);
 }
