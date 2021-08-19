@@ -6,26 +6,24 @@
 
 
 int* gradingStudents(int grades_count, int* grades, int* result_count) {
+    
     *result_count = grades_count;
     
     int *rounded= malloc(grades_count*sizeof(int));
-    if (rounded==NULL) {
-        *result_count=0;
+    if (rounded == NULL) {
+        *result_count = 0;
          return NULL;
     }
+
     for (int i=0;i<grades_count;i++){
+
         *(rounded+i) = *(grades+i);
-             printf("[ mod5 %d] [%d] \n",*(grades+i)%5,*(grades+i));
 
-        if(*(grades+i)<38) {
-            printf("Grade is below 38\n");
-            continue;
-            }
-        if((5-(*(grades+i)%5)) <3) {
-             printf("[%d]->[%d] \n",*(grades+i),*(grades+i) +1);
-
-            *(rounded+i)= *(grades+i)-5 +((*(grades+i)%5)) ;
-
+        if(((*(grades+i)%5)) <3 || (*(grades+i) < 38)) {
+            *(rounded+i)= *(grades+i) ;
+        }
+        else{
+            *(rounded+i)= *(grades+i)+(5-((*(grades+i)%5))) ;
         }
     }
 
@@ -42,20 +40,12 @@ int result_count;
  result = gradingStudents(n,grades,&result_count);
 
 
-     for (int i = 0; i < n; i++) {
-        printf( "%d", *(grades + i));
-
-        if (i != n - 1) {
-            printf( "\n");
-        }
-    }
-    printf("\n-----------------\n");
      for (int i = 0; i < result_count; i++) {
-        printf( "%d", *(result + i));
-        if (*(result+i)!=expected[i]) printf( "[%d][%d]-->[%d] differente",*(result+i),expected[i],grades[i] );
-        if (i != result_count - 1) {
-            printf( "\n");
+   
+        if (*(result+i)!=expected[i]) {
+            printf( "[%d][%d]-->[%d] differente\n",*(result+i),expected[i],grades[i] );
         }
+  
     }
 
 }
