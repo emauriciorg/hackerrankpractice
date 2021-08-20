@@ -9,7 +9,9 @@ using namespace std;
 // Write your Student class here
 class Student {
     private :
+        int total_score = 0;
         vector <int> scores ;
+
     public:
         void input(void){
             int input_score;
@@ -20,11 +22,14 @@ class Student {
             }
         }
         int calculateTotalScore(void){
-            return 1;
+            for (int i = 0;  i< scores.size();i++){
+                total_score += scores[i];
+            }
+            return total_score;
         }
 
         void print_scores(){
-            for(int i=0 i< 5; i++){
+            for(int i=0; i< 5; i++){
                 cout << scores[i]<<" ";
             }
                 cout << "\n";
@@ -45,12 +50,12 @@ int main() {
 
 
     for(int i = 0; i < n; i++){
-        s[i].    print_scores();
+        s[i].print_scores();
     }
 
     // calculate kristen's score
     int kristen_score = s[0].calculateTotalScore();
-
+    cout << "Kristen Score "<< kristen_score<<"\n";
     // determine how many students scored higher than kristen
     int count = 0; 
     for(int i = 1; i < n; i++){
@@ -61,7 +66,7 @@ int main() {
     }
 
     // print result
-    cout << count;
+    cout <<"Students have "<< count<<" more than kristen";
     
     return 0;
 }
