@@ -146,36 +146,20 @@ int migratoryBirds(int arr_count, int* arr) {
                 //     continue;
                 // }
 
-                if ( bold.counter > bpresent.counter ){
-                        bpresent.counter=1;
-                        bpresent.type = *(arr+i);
-                        continue;
-                }
+        
                 if ( bold.counter < bpresent.counter ){
                         bold.counter = bpresent.counter;
                         bold.type =  bpresent.type;
-                        bpresent.counter=1;
-                        bpresent.type = *(arr+i);
+                    
                         continue;
                 }
 
-                if(bold.counter == bpresent.counter)
-                {
-                    if(bpresent.type < bold.type){
-                    
-                        bold.counter = bpresent.counter;
-                        bold.type =  bpresent.type;
-                         // continue;
-                    }else{
-                          // bold.counter = bold.counter;
-                           // bold.type =  bpresent.type;
-                    }
-                     bpresent.counter=1;
+                   bpresent.counter=1;
                         bpresent.type = *(arr+i);
                 }
 
                  
-            }
+            
         }
         if( bold.type == bpresent.type){
             most_repeated =  bpresent.type;
@@ -202,7 +186,7 @@ int migratoryBirds(int arr_count, int* arr) {
 void main(void)
 {
     int n= 13;
-    int birds[13] = {1,4,4,4,5,3,5,8,56,56,56,56,56};
+    int birds[13] = {1,4,4,4,5,3,4,8,1,1,1,56,56};
     int frequency = migratoryBirds(n, birds);
     
     printf("most repeated [%d]\n", frequency);
